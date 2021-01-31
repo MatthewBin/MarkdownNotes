@@ -1,0 +1,30 @@
+﻿<Window x:Class="MarkdownNodes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MarkdownNodes"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        ShowInTaskbar="False"
+        Width="800">
+    <Grid>
+        <WrapPanel>
+            <Button Width="80"
+                    Height="25"
+                    Margin="5"
+                    Content="设置"
+                    Click="Button_Click">
+
+            </Button>
+            <Button Width="80"
+                    Height="25"
+                    Margin="5"
+                    Content="笔记"
+                    Click="Button_Click">
+
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Window>
