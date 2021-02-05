@@ -22,6 +22,14 @@ namespace MarkdownNodes
 
         public ObservableCollection<MarkDownDir> DirList { get; set; }
 
+        private Visibility mFileListVisible=Visibility.Collapsed;
+        public Visibility FileListVisible
+        {
+            get { return mFileListVisible; }
+            set { mFileListVisible = value;RaisePropChange("FileListVisible"); }
+        }
+
+
         public void AddDir(MarkDownDir dir)
         {
             bool hasAdd = false;
@@ -41,6 +49,20 @@ namespace MarkdownNodes
             }
         }
 
+        public void RemoveDir(MarkDownDir dir)
+        {
+            if (dir != null)
+            {
+                for (int i = 0; i < DirList.Count; i++)
+                {
+                    if (DirList[i].FullPath == dir.FullPath)
+                    {
+                        DirList.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+        }
       
         public void Close()
         {
@@ -75,7 +97,7 @@ namespace MarkdownNodes
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void RaisePropChang(string propName)
+        public void RaisePropChange(string propName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }

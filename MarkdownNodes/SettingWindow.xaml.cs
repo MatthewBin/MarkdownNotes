@@ -84,5 +84,19 @@ namespace MarkdownNodes
 
             mv.AddDir(dir);
         }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MarkDownDir dir = (sender as FrameworkElement).DataContext as MarkDownDir;
+            if (dir!=null)
+            {
+                this.mv.RemoveDir(dir);
+            }
+        }
     }
 }

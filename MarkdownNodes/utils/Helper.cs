@@ -19,7 +19,7 @@ namespace MarkdownNodes.utils
             }
 
             DirectoryInfo info = new DirectoryInfo(dirPath);
-            FileInfo[] files = info.GetFiles("*.md", SearchOption.AllDirectories);
+            FileInfo[] files = info.GetFiles("*.md", SearchOption.TopDirectoryOnly);
             MarkDownDir dir = new MarkDownDir()
             {
                 FullPath = dirPath,
@@ -50,7 +50,7 @@ namespace MarkdownNodes.utils
         {
             try
             {
-                FileStream fs = new FileStream(fileName,FileMode.OpenOrCreate);
+                FileStream fs = new FileStream(fileName,FileMode.Create);
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 xs.Serialize(fs, obj);
                 fs.Close();
@@ -59,7 +59,7 @@ namespace MarkdownNodes.utils
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                return false;
             }
         }
 
@@ -83,7 +83,7 @@ namespace MarkdownNodes.utils
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+                return default(T);
             }
         }
 

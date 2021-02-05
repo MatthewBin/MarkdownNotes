@@ -27,14 +27,7 @@ namespace MarkdownNodes
 
         private void NoteWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Brush> colors = new List<Brush>();
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#9c1")));
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#222")));
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#922")));
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#292")));
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#229")));
-            colors.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c2c")));
-            cb_color.ItemsSource = colors;
+
         }
 
         private void Btn_close_window(object sender, RoutedEventArgs e)
@@ -45,6 +38,15 @@ namespace MarkdownNodes
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void ColorPicker_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var colorPicker = (sender as MaterialDesignThemes.Wpf.ColorPicker);
+            if (colorPicker != null)
+            {
+                this.Background = new SolidColorBrush(colorPicker.Color);
+            }
         }
     }
 

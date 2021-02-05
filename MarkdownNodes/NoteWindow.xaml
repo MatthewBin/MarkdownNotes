@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarkdownNodes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="NoteWindow"
         Height="450"
@@ -26,10 +27,12 @@
         </Grid.RowDefinitions>
         <Border Background="Transparent"
                 MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <Button Width="50"
+            <Button Width="25"
                     Height="25"
                     HorizontalAlignment="Right"
                     Margin="5"
+                    Style="{DynamicResource MaterialDesignIconButton}"
+                    Content="{materialDesign:PackIcon Kind=Close}"
                     Click="Btn_close_window" />
         </Border>
         <TextBlock Grid.Row="1"
@@ -48,13 +51,35 @@
                     Minimum="0.2"
                     Maximum="1.0"
                     Value="1.0" />
-            <ComboBox x:Name="cb_color"
-                      Grid.Column="1"
-                      SelectedIndex="0"
-                      Width="25"
-                      Height="25"
-                      Margin="10,5,15,5">
-            </ComboBox>
+            <materialDesign:ColorZone Grid.Column="1"
+                                      Margin="10,5,15,5" />
+           
+            <Border Grid.Column="1"
+                    Width="25"
+                    Height="25"
+                    Margin="10,5,15,5"
+                    BorderBrush="#EEE"
+                    BorderThickness="1"
+                    Background="#1FFF">
+                <ToggleButton x:Name="tb"
+                              Width="20"
+                              Height="20"
+                              Style="{DynamicResource MaterialDesignFlatPrimaryToggleButton}">
+                    <Popup x:Name="popup"
+                           Width="200"
+                           Height="240"
+                           IsOpen="{Binding ElementName=tb,Path=IsChecked}">
+                        <materialDesign:ColorPicker MouseLeftButtonDown="ColorPicker_MouseLeftButtonDown"/>
+                    </Popup>
+                </ToggleButton>
+                
+            </Border>
+            <!--<materialDesign:DialogHost IsOpen="{Binding ElementName=tb,Path=IsChecked}">
+                <materialDesign:DialogHost.DialogContent>
+                    This is title?
+                </materialDesign:DialogHost.DialogContent>
+                <Button Width="100" Height="100"/>
+            </materialDesign:DialogHost>-->
         </Grid>
     </Grid>
 </Window>

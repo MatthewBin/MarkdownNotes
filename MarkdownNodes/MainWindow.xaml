@@ -4,27 +4,119 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarkdownNodes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="Transparent"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
+        Width="430"
+        Height="auto"
         Title="MainWindow"
-        Height="450"
         ShowInTaskbar="False"
-        Width="800">
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Topmost="True"
+        VerticalAlignment="Top">
+    <Window.Resources>
+        <local:VisibleConverter x:Key="VisibleConverter" />
+    </Window.Resources>
     <Grid>
-        <WrapPanel>
-            <Button Width="80"
-                    Height="25"
-                    Margin="5"
-                    Content="设置"
-                    Click="Button_Click">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!-- Row 0 -->
+        <materialDesign:Card Padding="10,5"
+                             Margin="0"
+                             Background="#222"
+                             MouseLeftButtonDown="Card_MouseLeftButtonDown">
+            <StackPanel Orientation="Horizontal">
+                <Button Width="25"
+                        Height="25"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignIconButton}"
+                        Content="{materialDesign:PackIcon Kind=Settings}"
+                        Click="Btn_Setting_Click" />
+                <TextBlock Text="目录"
+                           VerticalAlignment="Center"
+                           Margin="5,0"
+                           Foreground="#999" />
+                <ComboBox x:Name="cb"
+                          Width="230"
+                          VerticalAlignment="Center"
+                          ItemsSource="{Binding DirList}"
+                          BorderBrush="#999"
+                          Style="{DynamicResource MaterialDesignComboBox}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayName}"
+                                       TextTrimming="CharacterEllipsis"
+                                       ToolTip="{Binding DisplayName}"
+                                       Foreground="MediumPurple"
+                                       Style="{DynamicResource MaterialDesignBody2TextBlock}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Grid Margin="15,10"
+                      VerticalAlignment="Center">
+                    <Button Width="25"
+                            Height="25"
+                            Style="{DynamicResource MaterialDesignIconButton}"
+                            Content="{materialDesign:PackIcon Kind=DriveDocument}"
+                            Visibility="{Binding FileListVisible,Converter={StaticResource VisibleConverter}}"
+                            Click="Btn_Show_FileList_Click" />
+                    <Button Width="25"
+                            Height="25"
+                            Style="{DynamicResource MaterialDesignIconButton}"
+                            Content="{materialDesign:PackIcon Kind=LanguageCss3}"
+                            Click="Btn_Close_FileList_Click"
+                            Visibility="{Binding FileListVisible}" />
+                </Grid>
 
-            </Button>
-            <Button Width="80"
-                    Height="25"
-                    Margin="5"
-                    Content="笔记"
-                    Click="Button_Click">
+                <Button Width="25"
+                        Height="25"
+                        Margin="10"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignIconButton}"
+                        Content="{materialDesign:PackIcon Kind=Close}"
+                        Foreground="#999"
+                        Click="Btn_Shutdown_Click" />
+            </StackPanel>
+        </materialDesign:Card>
 
-            </Button>
-        </WrapPanel>
+        <!-- Row 1 -->
+        <materialDesign:Card Grid.Row="1"
+                             Padding="10"
+                             Margin="0,5"
+                             Height="300"
+                             Background="#222"
+                             Visibility="{Binding FileListVisible}">
+            <ListBox ItemContainerStyle="{DynamicResource MaterialDesignListBoxItem}"
+                     ItemsSource="{Binding ElementName=cb,Path=SelectedItem.MarkDownFiles}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"
+                                   Foreground="#666"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding Name}"
+                                   Style="{DynamicResource MaterialDesignBody2TextBlock}">
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="打开"
+                                              Style="{DynamicResource MaterialDesignMenuItem}"
+                                              Click="MenuItem_Click" />
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </materialDesign:Card>
     </Grid>
 </Window>
