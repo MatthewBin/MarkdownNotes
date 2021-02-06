@@ -44,4 +44,4 @@ Markdown笔记查看软件
 
 #### 下载
 
-* [v0.0.1](https://gitee.com/matthewbin/markdown-notes/releases/0.0.1)
+* [版本 v-0.0.1](https://gitee.com/matthewbin/markdown-notes/releases/0.0.1)
