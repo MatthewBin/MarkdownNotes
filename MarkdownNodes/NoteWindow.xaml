@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MarkdownNodes"
+        xmlns:model="clr-namespace:MarkdownNodes.models"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="NoteWindow"
@@ -18,15 +20,44 @@
         Topmost="True"
         Background="#222"
         ShowInTaskbar="False"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+        x:Name="root">
+    <Window.Resources>
+
+        <model:Markdown x:Key="Markdown"
+                        DocumentStyle="{StaticResource DocumentStyle}"
+                        Heading1Style="{StaticResource H1Style}"
+                        Heading2Style="{StaticResource H2Style}"
+                        Heading3Style="{StaticResource H3Style}"
+                        Heading4Style="{StaticResource H4Style}"
+                        LinkStyle="{StaticResource LinkStyle}"
+                        ImageStyle="{StaticResource ImageStyle}"
+                        SeparatorStyle="{StaticResource SeparatorStyle}"
+                        TableStyle="{StaticResource TableStyle}"
+                        TableHeaderStyle="{StaticResource TableHeaderStyle}"
+                        AssetPathRoot="{x:Static system:Environment.CurrentDirectory}" />
+
+        <local:TextToFlowDocumentConverter x:Key="TextToFlowDocumentConverter"
+                                           Markdown="{StaticResource Markdown}" />
+
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Border Background="Transparent"
-                MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Background="Transparent"
+              MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="15,0"
+                       Foreground="#007ACC"
+                       Background="#111"
+                       FontSize="16"
+                       FontWeight="Bold"
+                       FontFamily="Microsoft Yahei" 
+                       Text="{Binding ElementName=root,Path=FileName}"/>
             <Button Width="25"
                     Height="25"
                     HorizontalAlignment="Right"
@@ -34,13 +65,13 @@
                     Style="{DynamicResource MaterialDesignIconButton}"
                     Content="{materialDesign:PackIcon Kind=Close}"
                     Click="Btn_close_window" />
-        </Border>
-        <TextBlock Grid.Row="1"
-                   Text="测试文字"
-                   Foreground="White"
-                   FontSize="20"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" />
+        </Grid>
+        <FlowDocumentScrollViewer Grid.Row="1"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  Margin="5"
+                                  Foreground="#CCC"
+                                  Document="{Binding ElementName=root, Path=FileText, Converter={StaticResource TextToFlowDocumentConverter}}" />
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -53,7 +84,7 @@
                     Value="1.0" />
             <materialDesign:ColorZone Grid.Column="1"
                                       Margin="10,5,15,5" />
-           
+
             <Border Grid.Column="1"
                     Width="25"
                     Height="25"
@@ -69,17 +100,11 @@
                            Width="200"
                            Height="240"
                            IsOpen="{Binding ElementName=tb,Path=IsChecked}">
-                        <materialDesign:ColorPicker MouseLeftButtonDown="ColorPicker_MouseLeftButtonDown"/>
+                        <materialDesign:ColorPicker MouseLeftButtonDown="ColorPicker_MouseLeftButtonDown" />
                     </Popup>
                 </ToggleButton>
-                
+
             </Border>
-            <!--<materialDesign:DialogHost IsOpen="{Binding ElementName=tb,Path=IsChecked}">
-                <materialDesign:DialogHost.DialogContent>
-                    This is title?
-                </materialDesign:DialogHost.DialogContent>
-                <Button Width="100" Height="100"/>
-            </materialDesign:DialogHost>-->
         </Grid>
     </Grid>
 </Window>

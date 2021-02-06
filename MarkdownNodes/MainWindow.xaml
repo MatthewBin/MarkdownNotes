@@ -48,6 +48,7 @@
                            Foreground="#999" />
                 <ComboBox x:Name="cb"
                           Width="230"
+                          SelectedIndex="0"
                           VerticalAlignment="Center"
                           ItemsSource="{Binding DirList}"
                           BorderBrush="#999"

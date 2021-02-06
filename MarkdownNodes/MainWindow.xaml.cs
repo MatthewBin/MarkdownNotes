@@ -56,9 +56,8 @@ namespace MarkdownNodes
         {
             models.MarkDownFile file = (sender as FrameworkElement).DataContext as models.MarkDownFile;
             if (file != null)
-            {
-                // TODO 
-                NoteWindow window = new NoteWindow();
+            { 
+                NoteWindow window = new NoteWindow(file);
                 window.Owner = this;
                 window.Show();
             }

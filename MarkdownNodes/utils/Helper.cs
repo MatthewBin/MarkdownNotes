@@ -87,5 +87,23 @@ namespace MarkdownNodes.utils
             }
         }
 
+        /// <summary>
+        /// 读取Markdown文件内容
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static string GetMardownFileText(string filePath)
+        {
+            string text = null;
+            try
+            {
+                text = File.ReadAllText(filePath);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return text;
+        }
     }
 }
