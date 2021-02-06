@@ -41,3 +41,7 @@ Markdown笔记查看软件
 #### 其他
 
 懒，不要提意见，提了也不改。做你想做的（MIT）
+
+#### 下载
+
+* [v0.0.1](https://gitee.com/matthewbin/markdown-notes/releases/0.0.1)
