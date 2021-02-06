@@ -8,7 +8,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{328632C4-F7B5-4ACE-BBCB-ADE29B59C117}"
 	ProjectSection(SolutionItems) = preProject
 		Licens.txt = Licens.txt
+		logo.ico = logo.ico
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{E4728B2D-EABE-443D-B4EB-40EF371AEDD8}"
+	ProjectSection(SolutionItems) = preProject
+		img\1.png = img\1.png
+		img\2.png = img\2.png
+		img\3.png = img\3.png
+		img\4.png = img\4.png
 	EndProjectSection
 EndProject
 Global
@@ -27,6 +36,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4728B2D-EABE-443D-B4EB-40EF371AEDD8} = {328632C4-F7B5-4ACE-BBCB-ADE29B59C117}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67435F60-6966-4F0F-8AD9-26096C521281}
