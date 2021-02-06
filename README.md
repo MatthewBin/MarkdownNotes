@@ -1,37 +1,28 @@
 # MarkdownNotes
 
 #### 介绍
+
 Markdown笔记查看软件
 
-#### 软件架构
-软件架构说明
+#### 为甚做这个软件
+
+近期工作需要做一些新的领域的内容，因为参考了很多文档，自己使用md记录的好多笔记。
+
+工作的同时需要看笔记，而且有些工作需要在虚机加密环境下完成，总之就是需要同时打开很多窗口。
+
+日常工作是双屏的，但是应对这么多窗口的需求，还是吃不消，经常切换屏幕很繁琐，所以决定做此软件，将md文档的查看可以做成半透明的，这样可以减少切换屏幕的动作。
+
+#### 功能
+
+1.  可设置多个md文档目录，目录可以起别名
+2.  md文档查看窗口可以设置透明度（20%-100%）
+3.	md文档查看窗口可以设置背景颜色
+4.  正常关闭的情况下，目录列表和文件列表自动保存
+
+#### 使用
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### 其他
 
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+懒，不要提意见，提了也不改。做你想做的（MIT）

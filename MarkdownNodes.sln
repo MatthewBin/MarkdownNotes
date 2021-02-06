@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownNodes", "MarkdownNodes\MarkdownNodes.csproj", "{2D6B8E10-D55B-453D-9DF7-6619C60142A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{328632C4-F7B5-4ACE-BBCB-ADE29B59C117}"
+	ProjectSection(SolutionItems) = preProject
+		Licens.txt = Licens.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Analysis|Any CPU = Analysis|Any CPU
