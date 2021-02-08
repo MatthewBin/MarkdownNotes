@@ -28,6 +28,7 @@ namespace MarkdownNodes
             InitializeComponent();
             this.Loaded += NoteWindow_Loaded;
             this.file = file;
+            utils.Helper.CurrentFile = file;
         }
 
         private void NoteWindow_Loaded(object sender, RoutedEventArgs e)
@@ -53,6 +54,7 @@ namespace MarkdownNodes
             }
             this.FileText = text;
             this.FileName = file.Name;
+            this.FullFileName = file.FullName;
         }
 
         private void Btn_close_window(object sender, RoutedEventArgs e)
@@ -82,8 +84,14 @@ namespace MarkdownNodes
             set { SetValue(FileNameProperty, value); }
         }
         public static readonly DependencyProperty FileNameProperty = DependencyProperty.Register("FileName", typeof(string), typeof(NoteWindow), new PropertyMetadata(""));
-
-
+        
+        public string FullFileName
+        {
+            get { return (string)GetValue(FullFileNameProperty); }
+            set { SetValue(FullFileNameProperty, value); }
+        }
+        public static readonly DependencyProperty FullFileNameProperty = DependencyProperty.Register("FullFileName", typeof(string), typeof(NoteWindow), new PropertyMetadata(""));
+        
         public string FileText
         {
             get { return (string)GetValue(FileTextProperty); }

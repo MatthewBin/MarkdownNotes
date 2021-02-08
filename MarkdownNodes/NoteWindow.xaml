@@ -49,15 +49,26 @@
         </Grid.RowDefinitions>
         <Grid Background="Transparent"
               MouseLeftButtonDown="Border_MouseLeftButtonDown">
-            <TextBlock HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="15,0"
-                       Foreground="#007ACC"
-                       Background="#111"
-                       FontSize="16"
-                       FontWeight="Bold"
-                       FontFamily="Microsoft Yahei" 
-                       Text="{Binding ElementName=root,Path=FileName}"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="5">
+                <Button Width="25"
+                        Height="25"
+                        Style="{DynamicResource MaterialDesignIconButton}"
+                        Content="{materialDesign:PackIcon Kind=Refresh}"
+                        Click="NoteWindow_Loaded" />
+                <TextBlock HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15,0"
+                           Foreground="#007ACC"
+                           Background="#111"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           FontFamily="Microsoft Yahei"
+                           Text="{Binding ElementName=root,Path=FileName}"
+                           ToolTip="{Binding ElementName=root,Path=FullFileName}" />
+            </StackPanel>
+            
             <Button Width="25"
                     Height="25"
                     HorizontalAlignment="Right"

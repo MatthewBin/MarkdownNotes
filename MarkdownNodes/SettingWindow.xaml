@@ -64,7 +64,7 @@
                             <DataTemplate>
                                 <TextBlock Text="{Binding DisplayName}"
                                            TextTrimming="CharacterEllipsis"
-                                           ToolTip="{Binding DisplayName}"
+                                           ToolTip="{Binding FullPath}"
                                            Foreground="MediumPurple"
                                            Style="{DynamicResource MaterialDesignBody2TextBlock}">
                                     <TextBlock.ContextMenu>
@@ -123,6 +123,7 @@
                              Margin="5"
                              Text="xxx"
                              VerticalAlignment="Center"
+                             BorderBrush="#999"
                              Foreground="#ccc" />
                     <TextBlock  Grid.Row="1"
                                 Grid.Column="1"

@@ -21,7 +21,7 @@ namespace MarkdownNodes
         }
 
         public ObservableCollection<MarkDownDir> DirList { get; set; }
-
+        public string LastSelectPath { get; set; } = "";
         private Visibility mFileListVisible=Visibility.Collapsed;
         public Visibility FileListVisible
         {

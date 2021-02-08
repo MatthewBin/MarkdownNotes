@@ -434,6 +434,11 @@ namespace MarkdownNodes.models
 
             string linkText = match.Groups[2].Value;
             string url = match.Groups[3].Value;
+            if(url!=null && utils.Helper.CurrentFile!=null && !url.ToLower().Contains("http"))
+            {
+                System.IO.FileInfo info = new System.IO.FileInfo(utils.Helper.CurrentFile.FullName);
+                url = System.IO.Path.Combine(info.DirectoryName, url);
+            }
             BitmapImage imgSource = null;
             try
             {

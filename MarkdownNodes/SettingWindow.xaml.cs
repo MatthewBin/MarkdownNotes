@@ -44,6 +44,7 @@ namespace MarkdownNodes
         private void Folder_Select_Button_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.SelectedPath=mv.LastSelectPath;
             dialog.Description = "选择需要设置的md文件目录";
             DialogResult result = dialog.ShowDialog();
 
@@ -51,6 +52,8 @@ namespace MarkdownNodes
             {
                 return;
             }
+
+            this.mv.LastSelectPath = dialog.SelectedPath;
 
             string dirPath = dialog.SelectedPath.Trim();
             dir = Helper.GetMarkDownDir(dirPath);

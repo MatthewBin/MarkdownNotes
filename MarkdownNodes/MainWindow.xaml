@@ -14,12 +14,13 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Width="430"
-        Height="auto"
         Title="MainWindow"
         ShowInTaskbar="False"
         WindowStyle="None"
         AllowsTransparency="True"
         Topmost="True"
+        Window.SizeToContent="Height"
+        ResizeMode="NoResize"
         VerticalAlignment="Top">
     <Window.Resources>
         <local:VisibleConverter x:Key="VisibleConverter" />
@@ -105,7 +106,7 @@
                         <TextBlock Text="{Binding Name}"
                                    Foreground="#666"
                                    TextTrimming="CharacterEllipsis"
-                                   ToolTip="{Binding Name}"
+                                   ToolTip="{Binding FullName}"
                                    Style="{DynamicResource MaterialDesignBody2TextBlock}">
                             <TextBlock.ContextMenu>
                                 <ContextMenu>

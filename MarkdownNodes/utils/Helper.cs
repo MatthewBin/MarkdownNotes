@@ -11,6 +11,8 @@ namespace MarkdownNodes.utils
 {
     public class Helper
     {
+        public static MarkDownFile CurrentFile { get; set; }
+
         public static MarkDownDir GetMarkDownDir(string dirPath)
         {
             if (!Directory.Exists(dirPath))
@@ -50,7 +52,7 @@ namespace MarkdownNodes.utils
         {
             try
             {
-                FileStream fs = new FileStream(fileName,FileMode.Create);
+                FileStream fs = new FileStream(fileName, FileMode.Create);
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 xs.Serialize(fs, obj);
                 fs.Close();
@@ -99,7 +101,7 @@ namespace MarkdownNodes.utils
             {
                 text = File.ReadAllText(filePath);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
